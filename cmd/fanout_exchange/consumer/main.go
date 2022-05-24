@@ -48,7 +48,7 @@ func main() {
 		false,
 		nil,
 	)
-	helpers.FailOnError(err, "failed to declare a queue")
+	helpers.FailOnError(err, "failed to bind a queue")
 
 	msgs, err := ch.Consume(
 		q.Name, // queue

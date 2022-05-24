@@ -39,7 +39,7 @@ func main() {
 		amqp.Publishing{
 			DeliveryMode: amqp.Persistent,
 			ContentType:  "text/plain",
-			Body:         []byte("from publisher direct exchange"),
+			Body:         []byte("from publisher topic exchange"),
 		})
 	fmt.Println(err)
 	helpers.FailOnError(err, "Failed to publish a message")

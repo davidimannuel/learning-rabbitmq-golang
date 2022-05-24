@@ -28,6 +28,26 @@ func main() {
 	)
 	helpers.FailOnError(err, "Failed to declare a queue")
 
+	// err = ch.ExchangeDeclare(
+	// 	constants.AMQP_QUEUE_NAME, // name
+	// 	amqp.ExchangeDirect,       // type
+	// 	true,                      // durable
+	// 	false,                     // auto-deleted
+	// 	false,                     // internal
+	// 	false,                     // no-wait
+	// 	nil,                       // arguments
+	// )
+	// helpers.FailOnError(err, "Failed to declare an exchange")
+
+	// err = ch.QueueBind(
+	// 	q.Name, // queue name
+	// 	constants.AMQP_DIRECT_EXCHANGE_ROUTING_KEY, // routing key -- The meaning of a binding key (routing key) depends on the exchange type
+	// 	constants.AMQP_DIRECT_EXCHANGE_NAME,        // exchange
+	// 	false,
+	// 	nil,
+	// )
+	// helpers.FailOnError(err, "failed to bind a queue")
+
 	err = ch.Publish(
 		"",     // exchange
 		q.Name, // routing key , we can publish without declare queue first, QueueDeclare just make sure queue already there

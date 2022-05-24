@@ -19,7 +19,7 @@ func main() {
 
 	q, err := ch.QueueDeclare(
 		constants.AMQP_QUEUE_NAME, // name
-		true,                      // durable
+		false,                     // durable
 		false,                     // delete when unused
 		false,                     // exclusive
 		false,                     // no-wait
