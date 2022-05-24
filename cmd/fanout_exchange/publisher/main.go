@@ -22,7 +22,7 @@ func main() {
 	err = ch.ExchangeDeclare(
 		constants.AMQP_FANOUT_EXCHANGE_NAME, // name
 		amqp.ExchangeFanout,                 // type
-		true,                                // durable
+		false,                               // durable
 		false,                               // auto-deleted
 		false,                               // internal
 		false,                               // no-wait

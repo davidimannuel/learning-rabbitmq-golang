@@ -8,4 +8,7 @@ const (
 	AMQP_DIRECT_EXCHANGE_ROUTING_KEY = "learning-rabbitmq-direct.routing-key"
 	// fanout exchange
 	AMQP_FANOUT_EXCHANGE_NAME = "learning-rabbitmq-fanout.exchange"
+	// direct exchange
+	AMQP_TOPIC_EXCHANGE_NAME        = "learning-rabbitmq-topic.exchange"
+	AMQP_TOPIC_EXCHANGE_ROUTING_KEY = "learning-rabbitmq-topic.routing-key.*"
 )

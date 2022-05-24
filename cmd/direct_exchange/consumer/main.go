@@ -23,7 +23,7 @@ func main() {
 	err = ch.ExchangeDeclare(
 		constants.AMQP_DIRECT_EXCHANGE_NAME, // name
 		amqp.ExchangeDirect,                 // type
-		true,                                // durable
+		false,                               // durable
 		false,                               // auto-deleted
 		false,                               // internal
 		false,                               // no-wait

@@ -21,19 +21,19 @@ func main() {
 	defer ch.Close()
 
 	err = ch.ExchangeDeclare(
-		constants.AMQP_FANOUT_EXCHANGE_NAME, // name
-		amqp.ExchangeFanout,                 // type
-		true,                                // durable
-		false,                               // auto-deleted
-		false,                               // internal
-		false,                               // no-wait
-		nil,                                 // arguments
+		constants.AMQP_TOPIC_EXCHANGE_NAME, // name
+		amqp.ExchangeTopic,                 // type
+		false,                              // durable
+		false,                              // auto-deleted
+		false,                              // internal
+		false,                              // no-wait
+		nil,                                // arguments
 	)
 	helpers.FailOnError(err, "failed to declare a queue")
 
 	q, err := ch.QueueDeclare(
 		constants.AMQP_QUEUE_NAME, // name
-		false,                     // durable
+		true,                      // durable
 		false,                     // delete when unused
 		false,                     // exclusive
 		false,                     // no-wait
@@ -42,9 +42,9 @@ func main() {
 	helpers.FailOnError(err, "failed to declare a queue")
 
 	err = ch.QueueBind(
-		q.Name,                              // queue name
-		"",                                  // routing key -- The meaning of a binding key (routing key) depends on the exchange type
-		constants.AMQP_FANOUT_EXCHANGE_NAME, // exchange
+		q.Name, // queue name
+		constants.AMQP_TOPIC_EXCHANGE_ROUTING_KEY, // routing key -- The meaning of a binding key (routing key) depends on the exchange type
+		constants.AMQP_TOPIC_EXCHANGE_NAME,        // exchange
 		false,
 		nil,
 	)

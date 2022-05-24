@@ -21,19 +21,19 @@ func main() {
 	defer ch.Close()
 
 	err = ch.ExchangeDeclare(
-		constants.AMQP_DIRECT_EXCHANGE_NAME, // name
-		amqp.ExchangeDirect,                 // type
-		false,                               // durable
-		false,                               // auto-deleted
-		false,                               // internal
-		false,                               // no-wait
-		nil,                                 // arguments
+		constants.AMQP_TOPIC_EXCHANGE_NAME, // name
+		amqp.ExchangeTopic,                 // type
+		false,                              // durable
+		false,                              // auto-deleted
+		false,                              // internal
+		false,                              // no-wait
+		nil,                                // arguments
 	)
 	helpers.FailOnError(err, "failed to declare a queue")
 
 	err = ch.Publish(
-		constants.AMQP_DIRECT_EXCHANGE_NAME,        // exchange
-		constants.AMQP_DIRECT_EXCHANGE_ROUTING_KEY, // routing key
+		constants.AMQP_TOPIC_EXCHANGE_NAME,        // exchange
+		constants.AMQP_TOPIC_EXCHANGE_ROUTING_KEY, // routing key
 		false, // mandatory
 		false, // immediate
 		amqp.Publishing{
