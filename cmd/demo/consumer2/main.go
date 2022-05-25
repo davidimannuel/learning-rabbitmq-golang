@@ -19,27 +19,27 @@ func main() {
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"demo.queue", // name
-		false,        // durable
-		false,        // delete when unused
-		false,        // exclusive
-		false,        // no-wait
-		nil,          // arguments
+		"demo.queue2", // name
+		false,         // durable
+		false,         // delete when unused
+		false,         // exclusive
+		false,         // no-wait
+		nil,           // arguments
 	)
 	helpers.FailOnError(err, "failed to declare a queue")
 
 	err = ch.ExchangeDeclare(
-		"demo.exchange",    // name
-		amqp.ExchangeTopic, // type
-		true,               // durable
-		false,              // auto-deleted
-		false,              // internal
-		false,              // no-wait
-		nil,                // arguments
+		"demo.exchange",     // name
+		amqp.ExchangeFanout, // type
+		true,                // durable
+		false,               // auto-deleted
+		false,               // internal
+		false,               // no-wait
+		nil,                 // arguments
 	)
 	helpers.FailOnError(err, "Failed to declare an exchange")
 
-	routingKey := "key.#"
+	routingKey := "key.error"
 	err = ch.QueueBind(
 		q.Name,          // queue name
 		routingKey,      // routing key -- The meaning of a binding key (routing key) depends on the exchange type
